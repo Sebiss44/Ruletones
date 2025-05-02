@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruletas para Flor</title>
+  <style>
+    body {
+      background-color: #fffaf5;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .ruletas-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      height: 600px;
+    }
+
+    .ruleta {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border: 6px solid #f5e1da;
+      background: #fdebd0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .ruleta-1 { top: 40px; left: 100px; }
+    .ruleta-2 { top: 200px; left: calc(50% - 125px); }
+    .ruleta-3 { top: 40px; right: 100px; }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #cfe2f3;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .resultado {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #7d4e57;
+    }
+  </style>
+</head>
+<body>
+  <h2>Ruletas para Flor 🌸</h2>
+  <div class="ruletas-container">
+    <div class="ruleta ruleta-1">
+      <div><strong>Ruleta 1</strong></div>
+      <button onclick="girarRuleta(1)">Girar</button>
+      <div class="resultado" id="resultado1"></div>
+    </div>
+    <div class="ruleta ruleta-2">
+      <div><strong>Ruleta 2</strong></div>
+      <button onclick="girarRuleta(2)">Girar</button>
+      <div class="resultado" id="resultado2"></div>
+    </div>
+    <div class="ruleta ruleta-3">
+      <div><strong>Ruleta 3</strong></div>
+      <button onclick="girarRuleta(3)">Girar</button>
+      <div class="resultado" id="resultado3"></div>
+    </div>
+  </div>
+
+  <script>
+    const opciones = {
+      1: ["General", "Obligatorio", "Permanente", "Abstracción", "Coercibilidad", "Publicación", "Retroactividad"],
+      2: ["Presentación", "Análisis de comisión", "Cómo se hace", "Debate y aprobación", "Revisión", "Sanción", "Promulgación", "Publicación"],
+      3: ["Concepto de ley", "Ejemplos de ley", "¿Cómo nace la idea de una ley?", "Proyecto de ley", "¿Quiénes pueden presentar un proyecto?", "Limitaciones que tienen los ciudadanos", "Etapas", "Análisis de comisión ¿qué se hace?"]
+    };
+
+    function girarRuleta(num) {
+      const lista = opciones[num];
+      const elegido = lista[Math.floor(Math.random() * lista.length)];
+      document.getElementById(`resultado${num}`).innerText = `¡Genial! Te toca estudiar: ${elegido}`;
+    }
+  </script>
+</body>
+</html>
